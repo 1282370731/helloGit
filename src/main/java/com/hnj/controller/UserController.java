@@ -70,6 +70,7 @@ public class UserController {
                 userService.save(user);
             }
             session.setAttribute("user",user.getId());
+            stringRedisTemplate.delete("user:code:" + phone);
             return R.success(user);
         }
         return R.error("登录失败");
