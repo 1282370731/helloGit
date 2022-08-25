@@ -44,7 +44,7 @@ public class SetmealServiceImpl extends ServiceImpl<SetmealMapper, Setmeal>
         LambdaQueryWrapper<Setmeal> queryWrapper=new LambdaQueryWrapper<>();
         queryWrapper.in(Setmeal::getId,ids);
         queryWrapper.eq(Setmeal::getStatus,1);
-        Long count = this.count(queryWrapper);
+        Long count = Long.valueOf(this.count(queryWrapper));
         if(count>0){
             throw new CustomException("套餐正在售卖!");
         }
